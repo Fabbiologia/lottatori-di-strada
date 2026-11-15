@@ -1,6 +1,6 @@
 // Lottatori di Strada - funziona anche senza rete e si aggiorna da solo.
-const VERSIONE='lds-68';
-const FILE=['./','./index.html','./manifest.webmanifest','./icona-192.png','./icona-512.png'];
+const VERSIONE='lds-69';
+const FILE=['./','./index.html','./manifest.webmanifest','./icona-192.png','./icona-512.png','./online-lib.js','./online-config.js'];
 self.addEventListener('install',e=>{ e.waitUntil(caches.open(VERSIONE).then(c=>c.addAll(FILE))); self.skipWaiting(); });
 self.addEventListener('activate',e=>{ e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==VERSIONE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())); });
 self.addEventListener('fetch',e=>{
